@@ -1,0 +1,3 @@
+/home/mesabo/CLionProjects/parkingautoto/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mesabo/CLionProjects/parkingautoto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mesabo/CLionProjects/parkingautoto/cmake-build-debug/CMakeFiles/parkingautoto.dir
