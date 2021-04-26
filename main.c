@@ -204,13 +204,13 @@ void main() {
                         if (TPS < 24) {/// temps passe inferieur a 24h, prix/h
                             montant = VOITUREHEURE * TPS;
                             facturesortie(con, code, immat, montant);/// ETABLIR UN FACTURE
-                            printf("********** FACTURE STATIONNEMENT VOITURE**********\ntemps stationnement:  %d\nvoiture %s a la place %s\nla facture s'eleve a %d \n\n",
+                            printf("********** FACTURE STATIONNEMENT VOITURE**********\ntemps stationnement:  %d heures\nvoiture <<%s>> a la place <<%s>>\nla facture s'eleve a %d \n\n",
                                    TPS, immat, code, montant);
                         } else {/// temps passe superieur ou egal a 24h, prix/j = VOITUREJOUR
-                            montant = VOITUREJOUR * TPS;
+                            montant = VOITUREJOUR * (TPS%24);
                             facturesortie(con, code, immat, montant);/// ETABLIR UN FACTURE
-                            printf("********** FACTURE STATIONNEMENT VOITURE**********\ntemps stationnement:  %d\nvoiture %s a la place %s\nla facture s'eleve a %d \n\n",
-                                   TPS, immat, code, montant);
+                            printf("********** FACTURE STATIONNEMENT VOITURE**********\ntemps stationnement:  %d jours\nvoiture <<%s>> a la place <<%s>>\nla facture s'eleve a %d \n\n",
+                                   TPS%24, immat, code, montant);
                         }
                         libererplace(con, code);/// MARQUER LA PLACE `LIBRE`
 
@@ -227,13 +227,13 @@ void main() {
                         if (TPS < 24) {/// temps passe inferieur a 24h, prix/h
                             montant = CAMIONHEURE * TPS;
                             facturesortie(con, code, immat, montant);/// ETABLIR UN FACTURE
-                            printf("********** FACTURE STATIONNEMENT CAMION**********\ntemps stationnement:  %d\nvoiture %s a la place %s\na facture s'eleve a %d \n\n",
+                            printf("********** FACTURE STATIONNEMENT CAMION**********\ntemps stationnement:  %d heures\nvoiture <<%s>> a la place <<%s>>\nla facture s'eleve a %d \n\n",
                                    TPS, immat, code, montant);
                         } else {/// temps passe superieur ou egal a 24h, prix/j = CAMIONJOUR
-                            montant = CAMIONJOUR * TPS;
+                            montant = CAMIONJOUR * (TPS%24);
                             facturesortie(con, code, immat, montant);/// ETABLIR UN FACTURE
-                            printf("********** FACTURE STATIONNEMENT CAMION**********\ntemps stationnement:  %d\nvoiture %s a la place %s\na facture s'eleve a %d \n\n",
-                                   TPS, immat, code, montant);
+                            printf("********** FACTURE STATIONNEMENT CAMION**********\ntemps stationnement:  %d jours\nvoiture <<%s>> a la place <<%s>>\nla facture s'eleve a %d \n\n",
+                                   TPS%24, immat, code, montant);
                         }
                         libererplace(con, code);/// MARQUER LA PLACE `LIBRE`
 
@@ -248,12 +248,12 @@ void main() {
                         sortieauto(con, immat);///ENREGISTRER LA DATE DE SORTIE LA DEUX_ROUES DU PARKING
                         if (TPS < 24) {/// temps passe inferieur a 24h, prix/h
                             montant = DEUXROUESHEURE * TPS;
-                            printf("********** FACTURE STATIONNEMENT VOITURE**********\nprix unitaire: %d \nvoiture %s a la place %s\na facture s'eleve a %d \n\n",
+                            printf("********** FACTURE STATIONNEMENT VOITURE**********\nprix unitaire: %d heures\nvoiture <<%s>> a la place <<%s>>\nla facture s'eleve a %d \n\n",
                                    TPS, immat, code, montant);
                         } else {/// temps passe superieur ou egal a 24h, prix/j = VOITUREJOUR
-                            montant = DEUXROUESJOUR * TPS;
-                            printf("********** FACTURE STATIONNEMENT VOITURE**********\nprix unitaire:  %d\nvoiture %s a la place %s\na facture s'eleve a %d \n\n",
-                                   TPS, immat, code, montant);
+                            montant = DEUXROUESJOUR * (TPS%24);
+                            printf("********** FACTURE STATIONNEMENT VOITURE**********\nprix unitaire:  %d jours\nvoiture <<%s>> a la place <<%s>>\nla facture s'eleve a %d \n\n",
+                                   TPS%24, immat, code, montant);
                         }
                         libererplace(con, code);/// MARQUER LA PLACE `LIBRE`
 

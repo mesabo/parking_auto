@@ -23,7 +23,7 @@ char *tempspasse(MYSQL *con, char immat[50]) {
     char requete[200] = "";
 
     sprintf(requete,
-            "SELECT TIMESTAMPDIFF(MINUTE,entree,sortie) FROM autos WHERE immat='%s' ORDER BY sortie DESC LIMIT 1;",
+            "SELECT TIMESTAMPDIFF(HOUR,entree,sortie) FROM autos WHERE immat='%s' ORDER BY sortie DESC LIMIT 1;",
             immat);
     mysql_query(con, requete);
 
@@ -46,6 +46,6 @@ char *tempspasse(MYSQL *con, char immat[50]) {
         }
     }
     mysql_free_result(result);
-    printf("LE TEMPS PASSE EN STATIONNEMENT EST DE %s MINUTES\n", tps);
+    printf("LE TEMPS PASSE EN STATIONNEMENT EST DE %s HEURES\n", tps);
     return tps;
 }
